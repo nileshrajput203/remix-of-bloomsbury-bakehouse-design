@@ -8,7 +8,7 @@ const WhatsAppIcon = () => (
 
 const SocialIcons = () => {
   return (
-    <div className="fixed bottom-10 right-10 flex flex-col gap-3 z-40">
+    <div className="fixed bottom-10 left-10 flex flex-col gap-3 z-40">
       <a
         href="https://instagram.com"
         target="_blank"

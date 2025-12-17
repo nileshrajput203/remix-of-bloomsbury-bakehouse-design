@@ -34,8 +34,8 @@ const About = () => {
             <DemoPlaceholder label="Demo 3" />
           </div>
           
-          <div className="absolute bottom-8 lg:bottom-12 left-8 md:left-16 z-10">
-            <h1 className="hero-title text-dark-foreground animate-fade-up text-4xl lg:text-7xl">
+          <div className="absolute bottom-4 lg:bottom-12 left-4 md:left-16 z-10">
+            <h1 className="hero-title text-dark-foreground animate-fade-up text-3xl lg:text-7xl">
               Text 1
             </h1>
           </div>
@@ -44,14 +44,14 @@ const About = () => {
         {/* Content Section - Right */}
         <div 
           ref={scrollContainerRef}
-          className="lg:w-1/2 h-[70vh] lg:h-full dark-section p-6 md:p-10 lg:p-12 lg:pt-20 flex flex-col justify-start overflow-y-auto"
+          className="lg:w-1/2 h-[70vh] lg:h-full dark-section p-4 md:p-6 lg:p-8 lg:pt-12 flex flex-col justify-start overflow-y-auto"
         >
           <div className="max-w-lg">
-            <h2 className="section-title text-dark-foreground mb-6 animate-fade-up text-xl lg:text-2xl">
+            <h2 className="section-title text-dark-foreground mb-4 animate-fade-up text-lg lg:text-2xl">
               Text 1
             </h2>
 
-            <div className="space-y-4 text-dark-foreground/80 leading-relaxed text-sm lg:text-base">
+            <div className="space-y-3 text-dark-foreground/80 leading-relaxed text-xs lg:text-sm">
               <p className="animate-fade-up" style={{ animationDelay: "0.1s" }}>
                 Text 2
               </p>
@@ -63,15 +63,15 @@ const About = () => {
               </p>
             </div>
 
-            <p className="text-dark-foreground font-medium mt-6 mb-8 animate-fade-up text-sm lg:text-base" style={{ animationDelay: "0.4s" }}>
+            <p className="text-dark-foreground font-medium mt-4 mb-6 animate-fade-up text-xs lg:text-sm" style={{ animationDelay: "0.4s" }}>
               Text 2
             </p>
 
             <a
-              href="https://www.instagram.com"
+              href="https://www.instagram.com/bbcrestaurantcafe"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-cta inline-block text-center w-full animate-fade-up"
+              className="btn-cta inline-block text-center w-full animate-fade-up text-sm lg:text-base py-3 lg:py-4"
               style={{ animationDelay: "0.5s" }}
             >
               About BBC (Blue Bay Cafe)
