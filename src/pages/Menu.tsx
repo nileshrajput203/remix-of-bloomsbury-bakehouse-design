@@ -1,92 +1,160 @@
-import { useRef, useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import Layout from "@/components/Layout";
 import DemoPlaceholder from "@/components/DemoPlaceholder";
 import { ArrowUp } from "lucide-react";
 
-const categories = [
-  { id: "cakes", name: "Cakes" },
-  { id: "chocolates", name: "Chocolates" },
-  { id: "cookies", name: "Cookies" },
-  { id: "breads", name: "Breads" },
-  { id: "sandwiches", name: "Sandwiches" },
-  { id: "brownies", name: "Brownies" },
-  { id: "cupcakes", name: "Cupcakes" },
+const menuCategories = [
+  { id: "seafood", name: "Seafood" },
+  { id: "chicken", name: "Chicken" },
+  { id: "chinese", name: "Chinese" },
+  { id: "indian", name: "Indian Veg" },
+  { id: "rice", name: "Rice & Biryani" },
+  { id: "starters", name: "Starters" },
+  { id: "soups", name: "Soups" },
   { id: "desserts", name: "Desserts" },
 ];
 
-const menuData = {
-  cakes: [
-    { name: "Vanilla Sponge Cake", price650: "₹750", price1kg: "₹1,200", chefSpecial: false },
-    { name: "Chocolate Truffle Cake", price650: "₹850", price1kg: "₹1,400", chefSpecial: true },
-    { name: "Red Velvet Cake", price650: "₹900", price1kg: "₹1,500", chefSpecial: false },
-    { name: "Black Forest Cake", price650: "₹800", price1kg: "₹1,350", chefSpecial: false },
-    { name: "Butterscotch Cake", price650: "₹750", price1kg: "₹1,250", chefSpecial: false },
-    { name: "Mango Cream Cake", price650: "₹950", price1kg: "₹1,600", chefSpecial: true },
-  ],
-  chocolates: [
-    { name: "Dark Chocolate Truffles", price650: "₹450", price1kg: "₹800", chefSpecial: true },
-    { name: "Milk Chocolate Pralines", price650: "₹400", price1kg: "₹700", chefSpecial: false },
-    { name: "White Chocolate Bars", price650: "₹350", price1kg: "₹600", chefSpecial: false },
-    { name: "Hazelnut Chocolate", price650: "₹500", price1kg: "₹900", chefSpecial: true },
-    { name: "Orange Peel Chocolate", price650: "₹420", price1kg: "₹750", chefSpecial: false },
-  ],
-  cookies: [
-    { name: "Classic Chocolate Chip", price650: "₹300", price1kg: "₹550", chefSpecial: false },
-    { name: "Double Chocolate Cookie", price650: "₹350", price1kg: "₹600", chefSpecial: true },
-    { name: "Oatmeal Raisin Cookie", price650: "₹280", price1kg: "₹500", chefSpecial: false },
-    { name: "Peanut Butter Cookie", price650: "₹320", price1kg: "₹580", chefSpecial: false },
-    { name: "Almond Biscotti", price650: "₹380", price1kg: "₹680", chefSpecial: true },
-    { name: "Butter Cookies", price650: "₹250", price1kg: "₹450", chefSpecial: false },
-  ],
-  breads: [
-    { name: "Sourdough Loaf", price650: "₹200", price1kg: "₹350", chefSpecial: true },
-    { name: "Whole Wheat Bread", price650: "₹150", price1kg: "₹280", chefSpecial: false },
-    { name: "Multigrain Bread", price650: "₹180", price1kg: "₹320", chefSpecial: false },
-    { name: "Focaccia", price650: "₹220", price1kg: "₹400", chefSpecial: true },
-    { name: "Ciabatta", price650: "₹190", price1kg: "₹340", chefSpecial: false },
-    { name: "Garlic Bread", price650: "₹160", price1kg: "₹300", chefSpecial: false },
-  ],
-  sandwiches: [
-    { name: "Grilled Paneer Sandwich", price650: "₹180", price1kg: "—", chefSpecial: true },
-    { name: "Club Sandwich", price650: "₹220", price1kg: "—", chefSpecial: false },
-    { name: "Veg Mayo Sandwich", price650: "₹150", price1kg: "—", chefSpecial: false },
-    { name: "Cheese Burst Sandwich", price650: "₹200", price1kg: "—", chefSpecial: true },
-    { name: "Mushroom Melt", price650: "₹240", price1kg: "—", chefSpecial: true },
-    { name: "Garden Fresh Sandwich", price650: "₹160", price1kg: "—", chefSpecial: false },
-    { name: "Corn & Cheese Sandwich", price650: "₹190", price1kg: "—", chefSpecial: false },
-  ],
-  brownies: [
-    { name: "Classic Fudge Brownie", price650: "₹400", price1kg: "₹700", chefSpecial: false },
-    { name: "Walnut Brownie", price650: "₹450", price1kg: "₹800", chefSpecial: true },
-    { name: "Cream Cheese Brownie", price650: "₹480", price1kg: "₹850", chefSpecial: true },
-    { name: "Salted Caramel Brownie", price650: "₹500", price1kg: "₹900", chefSpecial: true },
-    { name: "Peanut Butter Brownie", price650: "₹460", price1kg: "₹820", chefSpecial: false },
-  ],
-  cupcakes: [
-    { name: "Vanilla Cupcake", price650: "₹80", price1kg: "—", chefSpecial: false },
-    { name: "Chocolate Cupcake", price650: "₹90", price1kg: "—", chefSpecial: false },
-    { name: "Red Velvet Cupcake", price650: "₹100", price1kg: "—", chefSpecial: true },
-    { name: "Blueberry Cupcake", price650: "₹110", price1kg: "—", chefSpecial: true },
-    { name: "Carrot Cupcake", price650: "₹95", price1kg: "—", chefSpecial: false },
-  ],
-  desserts: [
-    { name: "Tiramisu", price650: "₹550", price1kg: "₹1,000", chefSpecial: true },
-    { name: "Panna Cotta", price650: "₹400", price1kg: "₹750", chefSpecial: false },
-    { name: "Crème Brûlée", price650: "₹480", price1kg: "₹880", chefSpecial: true },
-    { name: "Chocolate Mousse", price650: "₹420", price1kg: "₹780", chefSpecial: false },
-    { name: "Fruit Tart", price650: "₹500", price1kg: "₹920", chefSpecial: true },
-  ],
+const menuItems: Record<string, { title: string; subtitle: string; items: { name: string; price: string; special?: boolean }[] }> = {
+  seafood: {
+    title: "SEAFOOD",
+    subtitle: "Fresh Catch Daily",
+    items: [
+      { name: "Surmai Fry", price: "₹350 / ₹450", special: true },
+      { name: "Pomfret Fry", price: "₹400 / ₹550" },
+      { name: "Fish Curry", price: "₹300 / ₹400" },
+      { name: "Garlic Prawns", price: "₹380 / ₹500", special: true },
+      { name: "Butter Prawns", price: "₹400 / ₹520" },
+      { name: "Tandoori Prawns", price: "₹450" },
+      { name: "Crab Curry", price: "₹500 / ₹650" },
+      { name: "Crab Fry", price: "₹480 / ₹620" },
+      { name: "Calamari Fry", price: "₹350" },
+      { name: "Grilled Calamari", price: "₹380" },
+      { name: "Lobster Special", price: "Market Price", special: true },
+    ],
+  },
+  chicken: {
+    title: "CHICKEN",
+    subtitle: "Signature Preparations",
+    items: [
+      { name: "Chicken Biryani", price: "₹280 / ₹450", special: true },
+      { name: "Hot Garlic Chicken", price: "₹320" },
+      { name: "Butter Chicken", price: "₹300" },
+      { name: "Tandoori Chicken (Half)", price: "₹280" },
+      { name: "Tandoori Chicken (Full)", price: "₹480" },
+      { name: "Chicken Tikka", price: "₹260" },
+      { name: "Chicken Chettinad", price: "₹320", special: true },
+      { name: "Schezwan Chicken", price: "₹300" },
+      { name: "Chicken Lollipop", price: "₹280" },
+      { name: "Chicken 65", price: "₹260" },
+      { name: "Chicken Korma", price: "₹290" },
+    ],
+  },
+  chinese: {
+    title: "CHINESE",
+    subtitle: "Indo-Chinese Specials",
+    items: [
+      { name: "Hakka Noodles (Veg)", price: "₹180" },
+      { name: "Hakka Noodles (Chicken)", price: "₹220" },
+      { name: "Hakka Noodles (Prawn)", price: "₹280" },
+      { name: "Schezwan Noodles", price: "₹200 / ₹250" },
+      { name: "Singapore Noodles", price: "₹220 / ₹280", special: true },
+      { name: "Veg Manchurian", price: "₹180" },
+      { name: "Chicken Manchurian", price: "₹250", special: true },
+      { name: "Prawn Manchurian", price: "₹320" },
+      { name: "Spring Rolls (Veg)", price: "₹150" },
+      { name: "Spring Rolls (Chicken)", price: "₹180" },
+      { name: "Salt & Pepper Squid", price: "₹300" },
+    ],
+  },
+  indian: {
+    title: "INDIAN VEG",
+    subtitle: "Traditional Flavors",
+    items: [
+      { name: "Paneer Butter Masala", price: "₹220", special: true },
+      { name: "Shahi Paneer", price: "₹240" },
+      { name: "Matar Paneer", price: "₹200" },
+      { name: "Dal Makhani", price: "₹180" },
+      { name: "Dal Tadka", price: "₹150" },
+      { name: "Vegetable Korma", price: "₹180" },
+      { name: "Aloo Gobi", price: "₹160" },
+      { name: "Chana Masala", price: "₹170" },
+      { name: "Paneer Tikka", price: "₹220" },
+      { name: "Mushroom Tikka", price: "₹200" },
+    ],
+  },
+  rice: {
+    title: "RICE & BIRYANI",
+    subtitle: "Fragrant Rice Dishes",
+    items: [
+      { name: "Vegetable Biryani", price: "₹200" },
+      { name: "Paneer Biryani", price: "₹240" },
+      { name: "Chicken Biryani", price: "₹280 / ₹450", special: true },
+      { name: "Mutton Biryani", price: "₹350 / ₹550" },
+      { name: "Seafood Biryani", price: "₹380 / ₹600", special: true },
+      { name: "Jeera Rice", price: "₹120" },
+      { name: "Ghee Rice", price: "₹140" },
+      { name: "Fried Rice (Veg)", price: "₹150" },
+      { name: "Fried Rice (Chicken)", price: "₹200" },
+      { name: "Schezwan Fried Rice", price: "₹180 / ₹220" },
+    ],
+  },
+  starters: {
+    title: "STARTERS",
+    subtitle: "Begin Your Feast",
+    items: [
+      { name: "Paneer Pakora", price: "₹180" },
+      { name: "Vegetable Pakora", price: "₹120" },
+      { name: "Onion Pakora", price: "₹100" },
+      { name: "Samosa (2 Pcs)", price: "₹80" },
+      { name: "Chicken Seek Kebab", price: "₹280", special: true },
+      { name: "Mutton Seek Kebab", price: "₹320" },
+      { name: "Fish Tikka", price: "₹300", special: true },
+      { name: "Crispy Corn", price: "₹180" },
+      { name: "Chinese Bhel", price: "₹150" },
+      { name: "Paneer 65", price: "₹220" },
+    ],
+  },
+  soups: {
+    title: "SOUPS",
+    subtitle: "Warm Beginnings",
+    items: [
+      { name: "Tomato Soup", price: "₹100" },
+      { name: "Sweet Corn Soup", price: "₹120" },
+      { name: "Manchow Soup", price: "₹130" },
+      { name: "Hot & Sour Soup", price: "₹130" },
+      { name: "Chicken Soup", price: "₹150" },
+      { name: "Seafood Soup", price: "₹200", special: true },
+      { name: "Lemon Coriander Soup", price: "₹120" },
+    ],
+  },
+  desserts: {
+    title: "DESSERTS",
+    subtitle: "Sweet Endings",
+    items: [
+      { name: "Gulab Jamun (2 Pcs)", price: "₹80" },
+      { name: "Kheer", price: "₹100" },
+      { name: "Ras Malai (2 Pcs)", price: "₹120", special: true },
+      { name: "Kesar Pista Kulfi", price: "₹80" },
+      { name: "Ice Cream (Scoop)", price: "₹60" },
+      { name: "Mango Sorbet", price: "₹100" },
+    ],
+  },
 };
 
 const Menu = () => {
-  const sectionRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+  const [activeCategory, setActiveCategory] = useState("seafood");
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const sectionRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
   const [showScrollTop, setShowScrollTop] = useState(false);
 
-  const scrollToSection = (categoryId: string) => {
+  const scrollToCategory = (categoryId: string) => {
+    setActiveCategory(categoryId);
     const section = sectionRefs.current[categoryId];
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (section && scrollContainerRef.current) {
+      const containerTop = scrollContainerRef.current.getBoundingClientRect().top;
+      const sectionTop = section.getBoundingClientRect().top;
+      const offset = sectionTop - containerTop + scrollContainerRef.current.scrollTop;
+      scrollContainerRef.current.scrollTo({ top: offset - 20, behavior: "smooth" });
     }
   };
 
@@ -101,7 +169,7 @@ const Menu = () => {
     if (!container) return;
 
     const handleScroll = () => {
-      setShowScrollTop(container.scrollTop > 300);
+      setShowScrollTop(container.scrollTop > 200);
     };
 
     container.addEventListener("scroll", handleScroll);
@@ -114,31 +182,31 @@ const Menu = () => {
         {/* Hero Section - Left */}
         <div className="relative lg:w-1/2 h-[30vh] lg:h-full flex-shrink-0">
           <div className="absolute inset-0 vignette">
-            <DemoPlaceholder label="Demo 1" />
+            <DemoPlaceholder label="Demo 2" />
           </div>
           
-          <div className="absolute bottom-8 lg:bottom-12 left-8 md:left-16 z-10">
-            <h1 className="hero-title text-dark-foreground mb-2 lg:mb-4 animate-fade-up text-4xl lg:text-7xl">
+          <div className="absolute bottom-4 lg:bottom-12 left-4 md:left-16 z-10">
+            <h1 className="hero-title text-dark-foreground animate-fade-up text-3xl lg:text-7xl">
               Text 1
             </h1>
-            <p className="text-dark-foreground/80 text-sm lg:text-base font-light leading-relaxed max-w-md animate-fade-up" style={{ animationDelay: "0.2s" }}>
+            <p className="text-dark-foreground/90 mt-2 lg:mt-4 max-w-lg leading-relaxed text-xs lg:text-base animate-fade-up" style={{ animationDelay: "0.2s" }}>
               Text 2
             </p>
           </div>
         </div>
 
-        {/* Menu Content - Right */}
+        {/* Menu Section - Right */}
         <div 
           ref={scrollContainerRef}
-          className="lg:w-1/2 h-[70vh] lg:h-full dark-section p-6 md:p-10 lg:p-12 lg:pt-20 overflow-y-auto"
+          className="lg:w-1/2 h-[70vh] lg:h-full dark-section p-4 md:p-6 lg:p-8 lg:pt-16 flex flex-col overflow-y-auto"
         >
           {/* Category Tabs */}
-          <div className="flex flex-wrap gap-2 justify-center mb-6 animate-fade-up">
-            {categories.map((category) => (
+          <div className="flex flex-wrap gap-2 mb-4 justify-center">
+            {menuCategories.map((category) => (
               <button
                 key={category.id}
-                onClick={() => scrollToSection(category.id)}
-                className="category-tab"
+                onClick={() => scrollToCategory(category.id)}
+                className={`category-tab text-[10px] lg:text-xs ${activeCategory === category.id ? "active" : ""}`}
               >
                 {category.name}
               </button>
@@ -146,58 +214,49 @@ const Menu = () => {
           </div>
 
           {/* Order Notice */}
-          <p className="text-center text-xs tracking-widest text-dark-foreground mb-8 uppercase animate-fade-up" style={{ animationDelay: "0.1s" }}>
-            All orders must be placed 48 hours in advance
+          <p className="text-center text-dark-foreground/60 text-[10px] lg:text-xs tracking-widest mb-4">
+            DINE-IN • DELIVERY • DRIVE-THROUGH
           </p>
 
-          {/* Menu Sections */}
-          {categories.map((category, catIndex) => (
-            <div
-              key={category.id}
-              ref={(el) => (sectionRefs.current[category.id] = el)}
-              className="mb-12 scroll-mt-8"
-            >
-              {/* Section Title */}
-              <div className="text-center mb-3 animate-fade-up" style={{ animationDelay: `${0.2 + catIndex * 0.05}s` }}>
-                <div className="flex items-center justify-center gap-4 mb-2">
-                  <span className="w-10 h-px bg-dark-border"></span>
-                  <h2 className="section-title text-dark-foreground uppercase text-lg lg:text-xl">
-                    {category.name}
-                  </h2>
-                  <span className="w-10 h-px bg-dark-border"></span>
-                </div>
-                {category.id !== "sandwiches" && category.id !== "cupcakes" && (
-                  <p className="text-muted text-xs tracking-widest">650 GMS / 1 KG</p>
-                )}
-                {(category.id === "sandwiches" || category.id === "cupcakes") && (
-                  <p className="text-muted text-xs tracking-widest">Per Piece</p>
-                )}
-              </div>
-
-              {/* Menu Items */}
-              <div className="mt-6">
-                {menuData[category.id as keyof typeof menuData]?.map((item, index) => (
-                  <div
-                    key={item.name}
-                    className="menu-item animate-fade-up"
-                    style={{ animationDelay: `${0.3 + index * 0.03}s` }}
-                  >
-                    <span className="text-dark-foreground text-sm flex items-center gap-2">
-                      {item.name}
-                      {item.chefSpecial && <span>👨‍🍳</span>}
-                    </span>
-                    <span className="text-dark-foreground text-sm whitespace-nowrap">
-                      {item.price1kg !== "—" ? `${item.price650} / ${item.price1kg}` : item.price650}
-                    </span>
+          {/* Menu Items by Category */}
+          <div className="space-y-6">
+            {Object.entries(menuItems).map(([categoryId, category]) => (
+              <div
+                key={categoryId}
+                ref={(el) => (sectionRefs.current[categoryId] = el)}
+                className="scroll-mt-4"
+              >
+                {/* Category Header */}
+                <div className="text-center mb-3">
+                  <div className="flex items-center justify-center gap-4 mb-1">
+                    <span className="w-8 h-px bg-dark-border" />
+                    <h2 className="section-title text-dark-foreground text-xl lg:text-3xl">
+                      {category.title}
+                    </h2>
+                    <span className="w-8 h-px bg-dark-border" />
                   </div>
-                ))}
-              </div>
-            </div>
-          ))}
+                  <p className="text-dark-foreground/50 text-[10px] lg:text-xs tracking-wide">
+                    {category.subtitle}
+                  </p>
+                </div>
 
-          <p className="text-center text-muted text-xs mt-8 pb-8">
-            👨‍🍳 Chef's Special
-          </p>
+                {/* Items */}
+                <div className="space-y-0">
+                  {category.items.map((item, index) => (
+                    <div key={index} className="menu-item py-2">
+                      <span className="text-dark-foreground text-xs lg:text-sm">
+                        {item.name}
+                        {item.special && <span className="ml-1">🍴</span>}
+                      </span>
+                      <span className="text-dark-foreground/80 text-xs lg:text-sm whitespace-nowrap">
+                        {item.price}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
 
           {/* Scroll to Top Button */}
           {showScrollTop && (

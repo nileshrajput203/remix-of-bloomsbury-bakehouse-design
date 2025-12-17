@@ -8,43 +8,43 @@
 
 @layer base {
   :root {
-    /* Bloomsbury Bakehouse Design System */
-    --background: 35 35% 93%; /* Cream #F5F0E8 */
-    --foreground: 0 0% 10%; /* Dark gray */
+    /* BBC Blue Bay Cafe - Coastal Luxury Design System */
+    --background: 30 25% 92%; /* Warm Beige #F5E6D3 */
+    --foreground: 200 30% 20%; /* Navy #1A3A52 */
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
+    --card-foreground: 200 30% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
+    --popover-foreground: 200 30% 20%;
 
-    /* Blue navigation */
-    --primary: 211 65% 57%; /* #4A8FD9 */
+    /* Ocean Teal primary */
+    --primary: 180 100% 25%; /* Teal #008080 */
     --primary-foreground: 0 0% 100%;
 
-    /* Tan cream for buttons */
-    --secondary: 30 41% 84%; /* #E8D7C3 */
-    --secondary-foreground: 0 0% 10%;
+    /* Warm Brown secondary */
+    --secondary: 30 25% 45%; /* Warm Brown #8B7355 */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 0 0% 50%;
-    --muted-foreground: 0 0% 70%;
+    --muted: 30 15% 60%;
+    --muted-foreground: 30 10% 75%;
 
-    /* Orange/Gold accent */
-    --accent: 36 100% 61%; /* #FFA836 */
-    --accent-foreground: 0 0% 100%;
+    /* Golden Yellow accent */
+    --accent: 45 100% 50%; /* Golden #FFD700 */
+    --accent-foreground: 200 30% 20%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Dark content areas */
-    --dark: 0 0% 0%;
+    /* Dark content areas - Navy inspired */
+    --dark: 200 30% 12%; /* Dark Navy */
     --dark-foreground: 0 0% 100%;
-    --dark-muted: 0 0% 10%;
-    --dark-border: 0 0% 25%;
+    --dark-muted: 200 25% 18%;
+    --dark-border: 200 20% 30%;
 
-    --border: 0 0% 85%;
-    --input: 0 0% 25%;
-    --ring: 211 65% 57%;
+    --border: 30 20% 80%;
+    --input: 200 20% 30%;
+    --ring: 180 100% 25%;
 
     --radius: 1rem;
 
