@@ -1,6 +1,7 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import DemoPlaceholder from "@/components/DemoPlaceholder";
+import { ArrowUp } from "lucide-react";
 
 const categories = [
   { id: "cakes", name: "Cakes" },
@@ -79,6 +80,8 @@ const menuData = {
 
 const Menu = () => {
   const sectionRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   const scrollToSection = (categoryId: string) => {
     const section = sectionRefs.current[categoryId];
@@ -87,29 +90,50 @@ const Menu = () => {
     }
   };
 
+  const scrollToTop = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      setShowScrollTop(container.scrollTop > 300);
+    };
+
+    container.addEventListener("scroll", handleScroll);
+    return () => container.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <Layout>
-      <div className="min-h-screen flex flex-col lg:flex-row">
+      <div className="h-screen overflow-hidden flex flex-col lg:flex-row">
         {/* Hero Section - Left */}
-        <div className="relative lg:w-1/2 h-[50vh] lg:h-screen lg:sticky lg:top-0">
+        <div className="relative lg:w-1/2 h-[30vh] lg:h-full flex-shrink-0">
           <div className="absolute inset-0 vignette">
             <DemoPlaceholder label="Demo 1" />
           </div>
           
-          <div className="absolute bottom-12 left-8 md:left-16 z-10">
-            <h1 className="hero-title text-dark-foreground mb-4 animate-fade-up">
+          <div className="absolute bottom-8 lg:bottom-12 left-8 md:left-16 z-10">
+            <h1 className="hero-title text-dark-foreground mb-2 lg:mb-4 animate-fade-up text-4xl lg:text-7xl">
               Text 1
             </h1>
-            <p className="text-dark-foreground/80 text-base md:text-lg font-light leading-relaxed max-w-md animate-fade-up" style={{ animationDelay: "0.2s" }}>
+            <p className="text-dark-foreground/80 text-sm lg:text-base font-light leading-relaxed max-w-md animate-fade-up" style={{ animationDelay: "0.2s" }}>
               Text 2
             </p>
           </div>
         </div>
 
         {/* Menu Content - Right */}
-        <div className="lg:w-1/2 dark-section p-8 md:p-12 lg:p-16 lg:pt-24">
+        <div 
+          ref={scrollContainerRef}
+          className="lg:w-1/2 h-[70vh] lg:h-full dark-section p-6 md:p-10 lg:p-12 lg:pt-20 overflow-y-auto"
+        >
           {/* Category Tabs */}
-          <div className="flex flex-wrap gap-3 justify-center mb-8 animate-fade-up sticky top-0 bg-dark-bg py-4 z-10">
+          <div className="flex flex-wrap gap-2 justify-center mb-6 animate-fade-up">
             {categories.map((category) => (
               <button
                 key={category.id}
@@ -122,7 +146,7 @@ const Menu = () => {
           </div>
 
           {/* Order Notice */}
-          <p className="text-center text-xs tracking-widest text-dark-foreground mb-12 uppercase animate-fade-up" style={{ animationDelay: "0.1s" }}>
+          <p className="text-center text-xs tracking-widest text-dark-foreground mb-8 uppercase animate-fade-up" style={{ animationDelay: "0.1s" }}>
             All orders must be placed 48 hours in advance
           </p>
 
@@ -131,13 +155,13 @@ const Menu = () => {
             <div
               key={category.id}
               ref={(el) => (sectionRefs.current[category.id] = el)}
-              className="mb-16 scroll-mt-32"
+              className="mb-12 scroll-mt-8"
             >
               {/* Section Title */}
               <div className="text-center mb-3 animate-fade-up" style={{ animationDelay: `${0.2 + catIndex * 0.05}s` }}>
                 <div className="flex items-center justify-center gap-4 mb-2">
                   <span className="w-10 h-px bg-dark-border"></span>
-                  <h2 className="section-title text-dark-foreground uppercase">
+                  <h2 className="section-title text-dark-foreground uppercase text-lg lg:text-xl">
                     {category.name}
                   </h2>
                   <span className="w-10 h-px bg-dark-border"></span>
@@ -145,16 +169,13 @@ const Menu = () => {
                 {category.id !== "sandwiches" && category.id !== "cupcakes" && (
                   <p className="text-muted text-xs tracking-widest">650 GMS / 1 KG</p>
                 )}
-                {category.id === "sandwiches" && (
-                  <p className="text-muted text-xs tracking-widest">Per Piece</p>
-                )}
-                {category.id === "cupcakes" && (
+                {(category.id === "sandwiches" || category.id === "cupcakes") && (
                   <p className="text-muted text-xs tracking-widest">Per Piece</p>
                 )}
               </div>
 
               {/* Menu Items */}
-              <div className="mt-8">
+              <div className="mt-6">
                 {menuData[category.id as keyof typeof menuData]?.map((item, index) => (
                   <div
                     key={item.name}
@@ -174,9 +195,20 @@ const Menu = () => {
             </div>
           ))}
 
-          <p className="text-center text-muted text-xs mt-8">
+          <p className="text-center text-muted text-xs mt-8 pb-8">
             👨‍🍳 Chef's Special
           </p>
+
+          {/* Scroll to Top Button */}
+          {showScrollTop && (
+            <button
+              onClick={scrollToTop}
+              className="fixed bottom-24 right-8 bg-primary text-primary-foreground p-3 rounded-full shadow-lg hover:bg-primary/90 transition-all duration-300 hover:-translate-y-1 z-50"
+              aria-label="Scroll to top"
+            >
+              <ArrowUp className="w-5 h-5" />
+            </button>
+          )}
         </div>
       </div>
     </Layout>

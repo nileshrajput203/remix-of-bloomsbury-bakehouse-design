@@ -1,31 +1,57 @@
+import { useState, useRef, useEffect } from "react";
 import Layout from "@/components/Layout";
 import DemoPlaceholder from "@/components/DemoPlaceholder";
+import { ArrowUp } from "lucide-react";
 
 const About = () => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  const scrollToTop = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      setShowScrollTop(container.scrollTop > 200);
+    };
+
+    container.addEventListener("scroll", handleScroll);
+    return () => container.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <Layout>
-      <div className="min-h-screen flex flex-col lg:flex-row">
+      <div className="h-screen overflow-hidden flex flex-col lg:flex-row">
         {/* Hero Section - Left */}
-        <div className="relative lg:w-1/2 h-[50vh] lg:h-screen">
+        <div className="relative lg:w-1/2 h-[30vh] lg:h-full flex-shrink-0">
           <div className="absolute inset-0 vignette">
             <DemoPlaceholder label="Demo 3" />
           </div>
           
-          <div className="absolute bottom-12 left-8 md:left-16 z-10">
-            <h1 className="hero-title text-dark-foreground animate-fade-up">
+          <div className="absolute bottom-8 lg:bottom-12 left-8 md:left-16 z-10">
+            <h1 className="hero-title text-dark-foreground animate-fade-up text-4xl lg:text-7xl">
               Text 1
             </h1>
           </div>
         </div>
 
         {/* Content Section - Right */}
-        <div className="lg:w-1/2 dark-section p-8 md:p-12 lg:p-16 lg:pt-24 flex flex-col justify-center">
+        <div 
+          ref={scrollContainerRef}
+          className="lg:w-1/2 h-[70vh] lg:h-full dark-section p-6 md:p-10 lg:p-12 lg:pt-20 flex flex-col justify-start overflow-y-auto"
+        >
           <div className="max-w-lg">
-            <h2 className="section-title text-dark-foreground mb-8 animate-fade-up">
+            <h2 className="section-title text-dark-foreground mb-6 animate-fade-up text-xl lg:text-2xl">
               Text 1
             </h2>
 
-            <div className="space-y-6 text-dark-foreground/80 leading-relaxed">
+            <div className="space-y-4 text-dark-foreground/80 leading-relaxed text-sm lg:text-base">
               <p className="animate-fade-up" style={{ animationDelay: "0.1s" }}>
                 Text 2
               </p>
@@ -37,7 +63,7 @@ const About = () => {
               </p>
             </div>
 
-            <p className="text-dark-foreground font-medium mt-8 mb-12 animate-fade-up" style={{ animationDelay: "0.4s" }}>
+            <p className="text-dark-foreground font-medium mt-6 mb-8 animate-fade-up text-sm lg:text-base" style={{ animationDelay: "0.4s" }}>
               Text 2
             </p>
 
@@ -51,6 +77,17 @@ const About = () => {
               About BBC (Blue Bay Cafe)
             </a>
           </div>
+
+          {/* Scroll to Top Button */}
+          {showScrollTop && (
+            <button
+              onClick={scrollToTop}
+              className="fixed bottom-24 right-8 bg-primary text-primary-foreground p-3 rounded-full shadow-lg hover:bg-primary/90 transition-all duration-300 hover:-translate-y-1 z-50"
+              aria-label="Scroll to top"
+            >
+              <ArrowUp className="w-5 h-5" />
+            </button>
+          )}
         </div>
       </div>
     </Layout>
