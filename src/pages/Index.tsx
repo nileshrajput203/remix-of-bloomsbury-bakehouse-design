@@ -1,15 +1,18 @@
 import Layout from "@/components/Layout";
 import SidebarCard from "@/components/SidebarCard";
-import DemoPlaceholder from "@/components/DemoPlaceholder";
 
 const Index = () => {
   return (
     <Layout>
-      <div className="min-h-screen flex flex-col lg:flex-row">
+      <div className="h-screen overflow-hidden flex flex-col lg:flex-row">
         {/* Hero Section - Left */}
-        <div className="relative lg:w-[60%] h-[60vh] lg:h-screen">
+        <div className="relative lg:w-[60%] h-[40vh] lg:h-full">
           <div className="absolute inset-0 vignette">
-            <DemoPlaceholder label="Demo 1" />
+            <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/40 flex items-center justify-center">
+              <span className="text-2xl md:text-4xl font-serif text-dark-foreground/80 uppercase tracking-widest">
+                Demo 1
+              </span>
+            </div>
           </div>
           
           {/* Hero Content */}
@@ -24,7 +27,7 @@ const Index = () => {
         </div>
 
         {/* Sidebar - Right */}
-        <div className="lg:w-[40%] bg-background p-8 md:p-12 lg:p-16 flex flex-col justify-center gap-6 lg:overflow-y-auto">
+        <div className="lg:w-[40%] h-[60vh] lg:h-full bg-background p-4 md:p-8 lg:p-12 flex flex-col justify-center gap-4 lg:gap-6">
           <div className="animate-fade-up" style={{ animationDelay: "0.3s" }}>
             <SidebarCard
               label="Menu"
