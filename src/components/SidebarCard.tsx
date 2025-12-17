@@ -3,19 +3,28 @@ import { ArrowRight } from "lucide-react";
 
 interface SidebarCardProps {
   label: string;
-  imageSrc: string;
+  imageSrc?: string;
+  demoLabel?: string;
   to: string;
 }
 
-const SidebarCard = ({ label, imageSrc, to }: SidebarCardProps) => {
+const SidebarCard = ({ label, imageSrc, demoLabel, to }: SidebarCardProps) => {
   return (
     <Link to={to} className="sidebar-card block group">
       <div className="aspect-[4/3] overflow-hidden">
-        <img
-          src={imageSrc}
-          alt={label}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-        />
+        {imageSrc ? (
+          <img
+            src={imageSrc}
+            alt={label}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/40 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
+            <span className="text-xl font-serif text-foreground/80 uppercase tracking-widest">
+              {demoLabel || "Demo"}
+            </span>
+          </div>
+        )}
       </div>
       <div className="p-5 flex justify-between items-center">
         <span className="text-lg font-normal uppercase tracking-widest text-card-foreground">

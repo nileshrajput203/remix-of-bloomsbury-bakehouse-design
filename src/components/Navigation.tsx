@@ -31,7 +31,7 @@ const Navigation = () => {
 
         {/* Logo */}
         <Link to="/" className="font-script text-2xl md:text-3xl text-primary-foreground tracking-wide">
-          Bloomsbury Bakehouse
+          BBC (Blue Bay Cafe)
         </Link>
 
         {/* Desktop Links */}

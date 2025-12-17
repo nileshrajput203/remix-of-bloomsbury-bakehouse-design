@@ -1,9 +1,6 @@
 import Layout from "@/components/Layout";
 import SidebarCard from "@/components/SidebarCard";
-import heroChef from "@/assets/hero-chef.jpg";
-import cupcakeMenu from "@/assets/cupcake-menu.jpg";
-import cookieOrder from "@/assets/cookie-order.jpg";
-import chefAbout from "@/assets/chef-about.jpg";
+import DemoPlaceholder from "@/components/DemoPlaceholder";
 
 const Index = () => {
   return (
@@ -12,20 +9,16 @@ const Index = () => {
         {/* Hero Section - Left */}
         <div className="relative lg:w-[60%] h-[60vh] lg:h-screen">
           <div className="absolute inset-0 vignette">
-            <img
-              src={heroChef}
-              alt="Chef holding decorated cake"
-              className="w-full h-full object-cover"
-            />
+            <DemoPlaceholder label="Demo 1" />
           </div>
           
           {/* Hero Content */}
           <div className="absolute bottom-12 left-8 md:left-16 right-8 md:right-16 z-10">
             <h1 className="hero-title text-dark-foreground mb-6 animate-fade-up">
-              CHEF'S NOTE
+              Text 1
             </h1>
             <p className="text-dark-foreground/90 text-lg md:text-xl font-light leading-relaxed max-w-2xl animate-fade-up" style={{ animationDelay: "0.2s" }}>
-              "I pour my heart and soul into every cake, which I make from scratch, without compromising on the quality or taste of the product"
+              Text 2
             </p>
           </div>
         </div>
@@ -35,21 +28,21 @@ const Index = () => {
           <div className="animate-fade-up" style={{ animationDelay: "0.3s" }}>
             <SidebarCard
               label="Menu"
-              imageSrc={cupcakeMenu}
+              demoLabel="Demo 1"
               to="/menu"
             />
           </div>
           <div className="animate-fade-up" style={{ animationDelay: "0.4s" }}>
             <SidebarCard
               label="Place Order"
-              imageSrc={cookieOrder}
+              demoLabel="Demo 2"
               to="/order"
             />
           </div>
           <div className="animate-fade-up" style={{ animationDelay: "0.5s" }}>
             <SidebarCard
               label="About Us"
-              imageSrc={chefAbout}
+              demoLabel="Demo 3"
               to="/about"
             />
           </div>

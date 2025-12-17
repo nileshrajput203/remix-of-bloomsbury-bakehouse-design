@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
 import { toast } from "@/hooks/use-toast";
-import cookieOrder from "@/assets/cookie-order.jpg";
+import DemoPlaceholder from "@/components/DemoPlaceholder";
 
 const Order = () => {
   const [formData, setFormData] = useState({
@@ -30,16 +30,12 @@ const Order = () => {
         {/* Hero Section - Left */}
         <div className="relative lg:w-1/2 h-[40vh] lg:h-screen">
           <div className="absolute inset-0 vignette">
-            <img
-              src={cookieOrder}
-              alt="Chocolate cookies"
-              className="w-full h-full object-cover"
-            />
+            <DemoPlaceholder label="Demo 2" />
           </div>
           
           <div className="absolute bottom-12 left-8 md:left-16 z-10">
             <h1 className="hero-title text-dark-foreground leading-none animate-fade-up">
-              PLACE AN<br />ORDER
+              Text 1<br />Text 2
             </h1>
           </div>
         </div>
@@ -48,10 +44,10 @@ const Order = () => {
         <div className="lg:w-1/2 dark-section p-8 md:p-12 lg:p-16 lg:pt-24 flex flex-col justify-center">
           <div className="max-w-md mx-auto w-full">
             <h2 className="section-title text-dark-foreground text-center mb-6 animate-fade-up">
-              Place Your Order Request
+              Text 1
             </h2>
             <p className="text-muted-foreground text-center mb-10 leading-relaxed animate-fade-up" style={{ animationDelay: "0.1s" }}>
-              Fill out the form below with your order details. We'll get back to you within 24 hours to confirm availability and pricing.
+              Text 2
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -63,7 +59,7 @@ const Order = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="Devika Shah"
+                    placeholder="Your Name"
                     className="form-input"
                     required
                   />
@@ -89,7 +85,7 @@ const Order = () => {
                   name="location"
                   value={formData.location}
                   onChange={handleChange}
-                  placeholder="Shivaji Park, Dadar"
+                  placeholder="Your Location"
                   className="form-input"
                   required
                 />
@@ -101,7 +97,7 @@ const Order = () => {
                   name="order"
                   value={formData.order}
                   onChange={handleChange}
-                  placeholder="I am looking for a cake with..."
+                  placeholder="I am looking for..."
                   className="form-input bg-dark-muted border border-dark-border rounded-lg p-4 min-h-32 resize-y"
                   required
                 />
