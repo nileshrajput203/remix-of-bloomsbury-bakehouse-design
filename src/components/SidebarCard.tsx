@@ -10,32 +10,35 @@ interface SidebarCardProps {
 
 const SidebarCard = ({ label, imageSrc, demoLabel, to }: SidebarCardProps) => {
   return (
-    <Link to={to} className="group block relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
-      <div className="aspect-[16/5] overflow-hidden bg-gray-200">
+    <Link 
+      to={to} 
+      className="group block relative w-full h-full overflow-hidden"
+    >
+      {/* Image Container */}
+      <div className="w-full h-full overflow-hidden">
         {imageSrc ? (
           <img
             src={imageSrc}
             alt={label}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/40 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
-            <span className="text-lg font-serif text-foreground/80 uppercase tracking-widest">
+          <div className="w-full h-full bg-gradient-to-br from-primary/30 to-primary/50 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
+            <span className="text-lg font-serif text-foreground/70 uppercase tracking-widest">
               {demoLabel || "Demo"}
             </span>
           </div>
         )}
       </div>
 
-      {/* Overlay gradient for text visibility */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-      {/* Label positioned at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-between items-center z-10">
-        <span className="text-sm lg:text-base font-normal uppercase tracking-widest text-white">
+      {/* Label Overlay - Bottom Right */}
+      <div className="absolute bottom-4 right-4 flex items-center gap-3 bg-white/95 backdrop-blur-sm px-5 py-2.5 rounded-full shadow-md transition-all duration-300 group-hover:shadow-lg group-hover:bg-white">
+        <span className="text-sm font-medium text-foreground uppercase tracking-wide">
           {label}
         </span>
-        <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 text-white transition-transform duration-300 group-hover:translate-x-1" />
+        <div className="w-6 h-6 border-2 border-foreground rounded-full flex items-center justify-center transition-all duration-300 group-hover:bg-foreground group-hover:text-background">
+          <ArrowRight className="w-3 h-3" />
+        </div>
       </div>
     </Link>
   );
