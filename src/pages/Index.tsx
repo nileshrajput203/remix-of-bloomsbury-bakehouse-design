@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout";
 import SidebarCard from "@/components/SidebarCard";
-import heroChef from "@/assets/hero-chef.jpg";
+import DemoPlaceholder from "@/components/DemoPlaceholder";
 
 const Index = () => {
   return (
@@ -8,11 +8,7 @@ const Index = () => {
       <div className="h-screen overflow-hidden flex flex-col lg:flex-row">
         {/* Hero Section - Left */}
         <div className="relative lg:w-2/3 h-[40vh] lg:h-full">
-          <img
-            src={heroChef}
-            alt="Chef"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
+          <DemoPlaceholder label="Demo 1" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-transparent" />
 
           {/* Hero Content */}
