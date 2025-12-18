@@ -27,7 +27,7 @@ const Index = () => {
         </div>
 
         {/* Sidebar - Right */}
-        <div className="lg:w-1/3 h-[60vh] lg:h-full bg-background p-4 md:p-6 lg:p-8 flex flex-col justify-start lg:justify-center gap-3 lg:gap-5 overflow-y-auto">
+        <div className="lg:w-1/3 h-[60vh] lg:h-full bg-background p-4 md:p-6 lg:p-6 flex flex-col justify-center gap-4">
           <div className="animate-fade-up" style={{ animationDelay: "0.3s" }}>
             <SidebarCard
               label="Menu"
