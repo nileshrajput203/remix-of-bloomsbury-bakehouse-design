@@ -6,7 +6,7 @@ const Index = () => {
     <Layout>
       <div className="h-screen overflow-hidden flex flex-col lg:flex-row">
         {/* Hero Section - Left */}
-        <div className="relative lg:w-[60%] h-[40vh] lg:h-full">
+        <div className="relative lg:w-2/3 h-[40vh] lg:h-full">
           <div className="absolute inset-0 vignette">
             <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/40 flex items-center justify-center">
               <span className="text-2xl md:text-4xl font-serif text-dark-foreground/80 uppercase tracking-widest">
@@ -14,7 +14,7 @@ const Index = () => {
               </span>
             </div>
           </div>
-          
+
           {/* Hero Content */}
           <div className="absolute bottom-12 left-8 md:left-16 right-8 md:right-16 z-10">
             <h1 className="hero-title text-dark-foreground mb-6 animate-fade-up">
@@ -27,7 +27,7 @@ const Index = () => {
         </div>
 
         {/* Sidebar - Right */}
-        <div className="lg:w-[40%] h-[60vh] lg:h-full bg-background p-4 md:p-8 lg:p-12 flex flex-col justify-center gap-4 lg:gap-6">
+        <div className="lg:w-1/3 h-[60vh] lg:h-full bg-background p-4 md:p-6 lg:p-8 flex flex-col justify-start lg:justify-center gap-3 lg:gap-5 overflow-y-auto">
           <div className="animate-fade-up" style={{ animationDelay: "0.3s" }}>
             <SidebarCard
               label="Menu"
