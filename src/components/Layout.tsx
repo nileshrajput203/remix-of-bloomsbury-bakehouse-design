@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import Navigation from "./Navigation";
-import SocialIcons from "./SocialIcons";
 import Footer from "./Footer";
 
 interface LayoutProps {
@@ -12,7 +11,6 @@ const Layout = ({ children }: LayoutProps) => {
     <div className="min-h-screen">
       <Navigation />
       <main>{children}</main>
-      <SocialIcons />
       <Footer />
     </div>
   );
