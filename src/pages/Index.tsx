@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import SidebarCard from "@/components/SidebarCard";
+import heroChef from "@/assets/hero-chef.jpg";
 
 const Index = () => {
   return (
@@ -7,13 +8,12 @@ const Index = () => {
       <div className="h-screen overflow-hidden flex flex-col lg:flex-row">
         {/* Hero Section - Left */}
         <div className="relative lg:w-2/3 h-[40vh] lg:h-full">
-          <div className="absolute inset-0 vignette">
-            <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/40 flex items-center justify-center">
-              <span className="text-2xl md:text-4xl font-serif text-dark-foreground/80 uppercase tracking-widest">
-                Demo 1
-              </span>
-            </div>
-          </div>
+          <img
+            src={heroChef}
+            alt="Chef"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-transparent" />
 
           {/* Hero Content */}
           <div className="absolute bottom-12 left-8 md:left-16 right-8 md:right-16 z-10">
@@ -27,7 +27,7 @@ const Index = () => {
         </div>
 
         {/* Sidebar - Right */}
-        <div className="lg:w-1/3 h-[60vh] lg:h-full bg-background p-3 md:p-4 lg:p-4 flex flex-col justify-center gap-2">
+        <div className="lg:w-1/3 h-[60vh] lg:h-full bg-background p-2 md:p-3 lg:p-3 flex flex-col justify-between">
           <div className="animate-fade-up" style={{ animationDelay: "0.3s" }}>
             <SidebarCard
               label="Menu"
