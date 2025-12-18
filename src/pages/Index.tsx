@@ -8,7 +8,9 @@ const Index = () => {
       <div className="h-screen overflow-hidden flex flex-col lg:flex-row">
         {/* Hero Section - Left */}
         <div className="relative lg:w-2/3 h-[40vh] lg:h-full">
-          <DemoPlaceholder label="Demo 1" />
+          <div className="absolute inset-0">
+            <DemoPlaceholder label="Demo 1" />
+          </div>
           <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-transparent" />
 
           {/* Hero Content */}
@@ -23,22 +25,22 @@ const Index = () => {
         </div>
 
         {/* Sidebar - Right */}
-        <div className="lg:w-1/3 h-[60vh] lg:h-full bg-background p-2 md:p-3 lg:p-3 flex flex-col justify-between">
-          <div className="animate-fade-up" style={{ animationDelay: "0.3s" }}>
+        <div className="lg:w-1/3 h-[60vh] lg:h-full bg-background p-2 md:p-3 lg:p-3 flex flex-col">
+          <div className="flex-1 animate-fade-up" style={{ animationDelay: "0.3s" }}>
             <SidebarCard
               label="Menu"
               demoLabel="Demo 1"
               to="/menu"
             />
           </div>
-          <div className="animate-fade-up" style={{ animationDelay: "0.4s" }}>
+          <div className="flex-1 animate-fade-up" style={{ animationDelay: "0.4s" }}>
             <SidebarCard
               label="Place Order"
               demoLabel="Demo 2"
               to="/order"
             />
           </div>
-          <div className="animate-fade-up" style={{ animationDelay: "0.5s" }}>
+          <div className="flex-1 animate-fade-up" style={{ animationDelay: "0.5s" }}>
             <SidebarCard
               label="About Us"
               demoLabel="Demo 3"
