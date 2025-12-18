@@ -11,7 +11,7 @@ interface SidebarCardProps {
 const SidebarCard = ({ label, imageSrc, demoLabel, to }: SidebarCardProps) => {
   return (
     <Link to={to} className="group block relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
-      <div className="aspect-[4/3] overflow-hidden bg-gray-200">
+      <div className="aspect-[16/9] overflow-hidden bg-gray-200">
         {imageSrc ? (
           <img
             src={imageSrc}
