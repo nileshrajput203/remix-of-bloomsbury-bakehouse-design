@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import Layout from "@/components/Layout";
-import DemoPlaceholder from "@/components/DemoPlaceholder";
 import { ArrowUp } from "lucide-react";
+import cardMenu from "@/assets/card-menu.jpg";
 
 const menuCategories = [
   { id: "seafood", name: "Seafood" },
@@ -178,19 +178,25 @@ const Menu = () => {
 
   return (
     <Layout>
-      <div className="h-screen overflow-hidden flex flex-col lg:flex-row">
+      <div className="min-h-screen flex flex-col lg:flex-row">
         {/* Hero Section - Left */}
-        <div className="relative lg:w-1/2 h-[30vh] lg:h-full flex-shrink-0">
-          <div className="absolute inset-0 vignette">
-            <DemoPlaceholder label="Demo 2" />
+        <div className="relative lg:w-1/2 h-[30vh] sm:h-[35vh] lg:h-screen flex-shrink-0">
+          <div className="absolute inset-0">
+            <img 
+              src={cardMenu} 
+              alt="Blink Beyond Cafe Menu" 
+              className="w-full h-full object-cover"
+            />
           </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-dark/60 via-dark/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-dark/50 via-transparent to-transparent" />
           
-          <div className="absolute bottom-4 lg:bottom-12 left-4 md:left-16 z-10">
-            <h1 className="hero-title text-dark-foreground animate-fade-up text-3xl lg:text-7xl">
-              Text 1
+          <div className="absolute bottom-4 sm:bottom-6 lg:bottom-12 left-4 sm:left-6 md:left-12 lg:left-16 z-10">
+            <h1 className="font-serif font-light tracking-wide text-dark-foreground animate-fade-up text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+              Our Menu
             </h1>
-            <p className="text-dark-foreground/90 mt-2 lg:mt-4 max-w-lg leading-relaxed text-xs lg:text-base animate-fade-up" style={{ animationDelay: "0.2s" }}>
-              Text 2
+            <p className="text-dark-foreground/90 mt-2 lg:mt-4 max-w-lg leading-relaxed text-xs sm:text-sm lg:text-base animate-fade-up" style={{ animationDelay: "0.2s" }}>
+              Crafted with passion, served with love
             </p>
           </div>
         </div>
@@ -198,15 +204,15 @@ const Menu = () => {
         {/* Menu Section - Right */}
         <div 
           ref={scrollContainerRef}
-          className="lg:w-1/2 h-[70vh] lg:h-full dark-section p-4 md:p-6 lg:p-8 lg:pt-16 flex flex-col overflow-y-auto"
+          className="lg:w-1/2 min-h-[70vh] lg:min-h-screen dark-section p-4 sm:p-5 md:p-6 lg:p-8 pt-6 sm:pt-8 lg:pt-20 flex flex-col overflow-y-auto"
         >
           {/* Category Tabs */}
-          <div className="flex flex-wrap gap-2 mb-4 justify-center">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6 justify-center">
             {menuCategories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => scrollToCategory(category.id)}
-                className={`category-tab text-[10px] lg:text-xs ${activeCategory === category.id ? "active" : ""}`}
+                className={`category-tab text-[9px] sm:text-[10px] lg:text-xs px-2 sm:px-3 lg:px-4 py-1.5 sm:py-2 ${activeCategory === category.id ? "active" : ""}`}
               >
                 {category.name}
               </button>
@@ -214,12 +220,12 @@ const Menu = () => {
           </div>
 
           {/* Order Notice */}
-          <p className="text-center text-dark-foreground/60 text-[10px] lg:text-xs tracking-widest mb-4">
-            DINE-IN • DELIVERY • DRIVE-THROUGH
+          <p className="text-center text-dark-foreground/60 text-[9px] sm:text-[10px] lg:text-xs tracking-widest mb-4 sm:mb-6">
+            DINE-IN • DELIVERY • TAKEAWAY
           </p>
 
           {/* Menu Items by Category */}
-          <div className="space-y-6">
+          <div className="space-y-6 sm:space-y-8">
             {Object.entries(menuItems).map(([categoryId, category]) => (
               <div
                 key={categoryId}
@@ -227,15 +233,15 @@ const Menu = () => {
                 className="scroll-mt-4"
               >
                 {/* Category Header */}
-                <div className="text-center mb-3">
-                  <div className="flex items-center justify-center gap-4 mb-1">
-                    <span className="w-8 h-px bg-dark-border" />
-                    <h2 className="section-title text-dark-foreground text-xl lg:text-3xl">
+                <div className="text-center mb-3 sm:mb-4">
+                  <div className="flex items-center justify-center gap-2 sm:gap-4 mb-1">
+                    <span className="w-6 sm:w-8 h-px bg-dark-border" />
+                    <h2 className="font-serif font-light tracking-wide text-dark-foreground text-lg sm:text-xl lg:text-2xl xl:text-3xl">
                       {category.title}
                     </h2>
-                    <span className="w-8 h-px bg-dark-border" />
+                    <span className="w-6 sm:w-8 h-px bg-dark-border" />
                   </div>
-                  <p className="text-dark-foreground/50 text-[10px] lg:text-xs tracking-wide">
+                  <p className="text-dark-foreground/50 text-[9px] sm:text-[10px] lg:text-xs tracking-wide">
                     {category.subtitle}
                   </p>
                 </div>
@@ -243,12 +249,12 @@ const Menu = () => {
                 {/* Items */}
                 <div className="space-y-0">
                   {category.items.map((item, index) => (
-                    <div key={index} className="menu-item py-2">
-                      <span className="text-dark-foreground text-xs lg:text-sm">
+                    <div key={index} className="menu-item py-2 sm:py-3">
+                      <span className="text-dark-foreground text-xs sm:text-sm">
                         {item.name}
-                        {item.special && <span className="ml-1">🍴</span>}
+                        {item.special && <span className="ml-1 text-accent">★</span>}
                       </span>
-                      <span className="text-dark-foreground/80 text-xs lg:text-sm whitespace-nowrap">
+                      <span className="text-dark-foreground/80 text-xs sm:text-sm whitespace-nowrap ml-2">
                         {item.price}
                       </span>
                     </div>
@@ -262,10 +268,10 @@ const Menu = () => {
           {showScrollTop && (
             <button
               onClick={scrollToTop}
-              className="fixed bottom-24 right-8 bg-primary text-primary-foreground p-3 rounded-full shadow-lg hover:bg-primary/90 transition-all duration-300 hover:-translate-y-1 z-50"
+              className="fixed bottom-20 sm:bottom-24 right-4 sm:right-8 bg-primary text-primary-foreground p-2.5 sm:p-3 rounded-full shadow-lg hover:bg-primary/90 transition-all duration-300 hover:-translate-y-1 z-50"
               aria-label="Scroll to top"
             >
-              <ArrowUp className="w-5 h-5" />
+              <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           )}
         </div>

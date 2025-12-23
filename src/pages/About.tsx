@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import Layout from "@/components/Layout";
-import DemoPlaceholder from "@/components/DemoPlaceholder";
 import { ArrowUp } from "lucide-react";
+import galleryInterior from "@/assets/gallery-interior.jpg";
 
 const About = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -27,16 +27,22 @@ const About = () => {
 
   return (
     <Layout>
-      <div className="h-screen overflow-hidden flex flex-col lg:flex-row">
+      <div className="min-h-screen flex flex-col lg:flex-row">
         {/* Hero Section - Left */}
-        <div className="relative lg:w-1/2 h-[30vh] lg:h-full flex-shrink-0">
-          <div className="absolute inset-0 vignette">
-            <DemoPlaceholder label="Demo 3" />
+        <div className="relative lg:w-1/2 h-[35vh] sm:h-[40vh] lg:h-screen flex-shrink-0">
+          <div className="absolute inset-0">
+            <img 
+              src={galleryInterior} 
+              alt="Blink Beyond Cafe Interior" 
+              className="w-full h-full object-cover"
+            />
           </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-dark/60 via-dark/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-dark/50 via-transparent to-transparent" />
           
-          <div className="absolute bottom-4 lg:bottom-12 left-4 md:left-16 z-10">
-            <h1 className="hero-title text-dark-foreground animate-fade-up text-3xl lg:text-7xl">
-              Text 1
+          <div className="absolute bottom-6 sm:bottom-8 lg:bottom-12 left-4 sm:left-6 md:left-12 lg:left-16 z-10">
+            <h1 className="font-serif font-light tracking-wide text-dark-foreground animate-fade-up text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+              Our Story
             </h1>
           </div>
         </div>
@@ -44,37 +50,42 @@ const About = () => {
         {/* Content Section - Right */}
         <div 
           ref={scrollContainerRef}
-          className="lg:w-1/2 h-[70vh] lg:h-full dark-section p-4 md:p-6 lg:p-8 lg:pt-12 flex flex-col justify-start overflow-y-auto"
+          className="lg:w-1/2 min-h-[65vh] lg:min-h-screen dark-section p-5 sm:p-6 md:p-8 lg:p-10 xl:p-12 pt-8 sm:pt-10 lg:pt-24 flex flex-col justify-start overflow-y-auto"
         >
           <div className="max-w-lg">
-            <h2 className="section-title text-dark-foreground mb-4 animate-fade-up text-lg lg:text-2xl">
-              Text 1
+            <h2 className="font-serif font-light tracking-wide text-dark-foreground mb-4 sm:mb-6 animate-fade-up text-xl sm:text-2xl lg:text-3xl">
+              Welcome to Blink Beyond Cafe
             </h2>
 
-            <div className="space-y-3 text-dark-foreground/80 leading-relaxed text-xs lg:text-sm">
+            <div className="space-y-4 sm:space-y-5 text-dark-foreground/80 leading-relaxed text-sm sm:text-base">
               <p className="animate-fade-up" style={{ animationDelay: "0.1s" }}>
-                Text 2
+                At Blink Beyond Cafe, we believe that every moment deserves to be extraordinary. 
+                Our passion for culinary excellence drives us to create dishes that not only 
+                satisfy your hunger but elevate your dining experience.
               </p>
               <p className="animate-fade-up" style={{ animationDelay: "0.2s" }}>
-                Text 2
+                Founded with a vision to blend modern gastronomy with warm hospitality, 
+                we've crafted a space where food lovers can discover new flavors, 
+                reconnect with friends, and create lasting memories.
               </p>
               <p className="animate-fade-up" style={{ animationDelay: "0.3s" }}>
-                Text 2
+                Every ingredient is carefully sourced, every dish is thoughtfully prepared, 
+                and every guest is treated like family. That's the Blink Beyond promise.
               </p>
             </div>
 
-            <p className="text-dark-foreground font-medium mt-4 mb-6 animate-fade-up text-xs lg:text-sm" style={{ animationDelay: "0.4s" }}>
-              Text 2
+            <p className="text-dark-foreground font-medium mt-6 sm:mt-8 mb-6 sm:mb-8 animate-fade-up text-sm sm:text-base" style={{ animationDelay: "0.4s" }}>
+              Experience the difference. Experience Blink Beyond.
             </p>
 
             <a
-              href="https://www.instagram.com/bbcrestaurantcafe"
+              href="https://www.instagram.com/blinkbeyondcafe"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-cta inline-block text-center w-full animate-fade-up text-sm lg:text-base py-3 lg:py-4"
+              className="btn-cta inline-block text-center w-full animate-fade-up text-xs sm:text-sm lg:text-base py-3 sm:py-4 px-6 sm:px-8"
               style={{ animationDelay: "0.5s" }}
             >
-              About BBC (Blue Bay Cafe)
+              Follow Us on Instagram
             </a>
           </div>
 
@@ -82,10 +93,10 @@ const About = () => {
           {showScrollTop && (
             <button
               onClick={scrollToTop}
-              className="fixed bottom-24 right-8 bg-primary text-primary-foreground p-3 rounded-full shadow-lg hover:bg-primary/90 transition-all duration-300 hover:-translate-y-1 z-50"
+              className="fixed bottom-20 sm:bottom-24 right-4 sm:right-8 bg-primary text-primary-foreground p-2.5 sm:p-3 rounded-full shadow-lg hover:bg-primary/90 transition-all duration-300 hover:-translate-y-1 z-50"
               aria-label="Scroll to top"
             >
-              <ArrowUp className="w-5 h-5" />
+              <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           )}
         </div>
