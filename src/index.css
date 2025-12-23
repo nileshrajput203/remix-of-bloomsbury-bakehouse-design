@@ -8,45 +8,49 @@
 
 @layer base {
   :root {
-    /* BBC Blue Bay Cafe - Coastal Luxury Design System */
-    --background: 30 25% 92%; /* Warm Beige #F5E6D3 */
-    --foreground: 200 30% 20%; /* Navy #1A3A52 */
+    /* BBC Blue Bay Cafe - Modern Futuristic Design System */
+    --background: 220 15% 97%; /* Light silver-blue */
+    --foreground: 220 30% 15%; /* Deep navy */
 
     --card: 0 0% 100%;
-    --card-foreground: 200 30% 20%;
+    --card-foreground: 220 30% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 200 30% 20%;
+    --popover-foreground: 220 30% 15%;
 
-    /* Ocean Teal primary */
-    --primary: 180 100% 25%; /* Teal #008080 */
+    /* Ocean Teal primary with modern twist */
+    --primary: 185 85% 35%; /* Modern Teal */
     --primary-foreground: 0 0% 100%;
 
-    /* Warm Brown secondary */
-    --secondary: 30 25% 45%; /* Warm Brown #8B7355 */
+    /* Cool slate secondary */
+    --secondary: 220 15% 25%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 30 15% 60%;
-    --muted-foreground: 30 10% 75%;
+    --muted: 220 10% 75%;
+    --muted-foreground: 220 15% 45%;
 
-    /* Golden Yellow accent */
-    --accent: 45 100% 50%; /* Golden #FFD700 */
-    --accent-foreground: 200 30% 20%;
+    /* Coral accent for warmth */
+    --accent: 15 90% 60%; /* Coral */
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Dark content areas - Navy inspired */
-    --dark: 200 30% 12%; /* Dark Navy */
+    /* Dark content areas - Deep navy */
+    --dark: 220 35% 10%;
     --dark-foreground: 0 0% 100%;
-    --dark-muted: 200 25% 18%;
-    --dark-border: 200 20% 30%;
+    --dark-muted: 220 25% 18%;
+    --dark-border: 220 20% 25%;
 
-    --border: 30 20% 80%;
-    --input: 200 20% 30%;
-    --ring: 180 100% 25%;
+    --border: 220 15% 88%;
+    --input: 220 20% 30%;
+    --ring: 185 85% 35%;
 
     --radius: 1rem;
+
+    /* Glow effects */
+    --glow-primary: 185 85% 50%;
+    --glow-accent: 15 90% 65%;
 
     /* Typography */
     --font-serif: 'Playfair Display', Georgia, serif;
@@ -55,8 +59,8 @@
   }
 
   .dark {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    --background: 220 35% 8%;
+    --foreground: 0 0% 95%;
   }
 }
 
@@ -88,11 +92,12 @@
     font-family: var(--font-sans);
   }
 
-  /* Hero text styling */
+  /* Hero text styling - futuristic */
   .hero-title {
     @apply font-serif font-light tracking-wide;
     font-size: clamp(3rem, 10vw, 7.5rem);
     line-height: 1;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
   }
 
   /* Section title styling */
@@ -106,18 +111,54 @@
     @apply bg-dark text-dark-foreground;
   }
 
+  /* Glass morphism effect */
+  .glass {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  }
+
+  .glass-dark {
+    @apply bg-dark/90 backdrop-blur-xl border border-dark-border/50;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Glow effect */
+  .glow {
+    box-shadow: 0 0 40px hsl(var(--glow-primary) / 0.3);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 40px hsl(var(--glow-accent) / 0.3);
+  }
+
   /* Navigation link hover */
   .nav-link {
-    @apply uppercase tracking-widest text-sm font-medium transition-opacity duration-200 hover:opacity-80;
+    @apply uppercase tracking-widest text-sm font-medium transition-all duration-300;
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
   }
 
   /* Sidebar card styling */
   .sidebar-card {
-    @apply bg-card rounded-2xl overflow-hidden shadow-lg transition-all duration-300 cursor-pointer;
+    @apply bg-card rounded-2xl overflow-hidden shadow-lg transition-all duration-500 cursor-pointer;
   }
 
   .sidebar-card:hover {
-    @apply -translate-y-1 shadow-xl;
+    @apply -translate-y-2 shadow-2xl;
   }
 
   /* Menu item styling */
@@ -127,48 +168,90 @@
 
   /* Form input styling */
   .form-input {
-    @apply bg-transparent border-b border-dark-border py-4 text-dark-foreground placeholder:text-muted focus:border-muted-foreground focus:outline-none transition-colors w-full;
+    @apply bg-transparent border-b border-dark-border py-4 text-dark-foreground placeholder:text-muted focus:border-accent focus:outline-none transition-colors w-full;
   }
 
-  /* CTA Button gradient */
+  /* CTA Button gradient - futuristic */
   .btn-cta {
-    @apply px-12 py-5 rounded-xl text-lg font-normal uppercase tracking-widest transition-all duration-300;
-    background: linear-gradient(90deg, hsl(var(--accent)), hsl(36 100% 50%));
+    @apply px-12 py-5 rounded-xl text-lg font-normal uppercase tracking-widest transition-all duration-300 relative overflow-hidden;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(185 85% 45%));
     color: white;
   }
 
+  .btn-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+  }
+
+  .btn-cta:hover::before {
+    transform: translateX(100%);
+  }
+
   .btn-cta:hover {
-    @apply -translate-y-0.5;
-    box-shadow: 0 8px 20px hsla(var(--accent) / 0.3);
+    @apply -translate-y-1;
+    box-shadow: 0 15px 40px hsl(var(--primary) / 0.4);
   }
 
   /* Social icon styling */
   .social-icon {
-    @apply w-12 h-12 rounded-full bg-background flex items-center justify-center shadow-md transition-all duration-300 cursor-pointer;
+    @apply w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer border border-border/50;
+    background: linear-gradient(135deg, hsl(var(--card)), hsl(var(--background)));
   }
 
   .social-icon:hover {
-    @apply scale-110 shadow-lg;
+    @apply scale-110 border-primary;
+    box-shadow: 0 8px 25px hsl(var(--primary) / 0.25);
   }
 
   /* Category tab styling */
   .category-tab {
-    @apply px-4 py-2 text-xs uppercase tracking-wider border border-dark-border rounded text-dark-foreground transition-all duration-200;
+    @apply px-4 py-2 text-xs uppercase tracking-wider border border-dark-border rounded-full text-dark-foreground transition-all duration-300;
   }
 
   .category-tab:hover {
-    @apply border-muted-foreground bg-dark-muted;
+    @apply border-accent bg-accent/10;
   }
 
   .category-tab.active {
-    @apply border-dark-foreground bg-dark-border;
+    @apply border-accent bg-accent text-accent-foreground;
   }
 
-  /* Image vignette overlay */
-  .vignette::after {
+  /* Modern gradient overlays */
+  .gradient-overlay {
+    background: linear-gradient(135deg, hsl(var(--dark) / 0.7), hsl(var(--dark) / 0.3));
+  }
+
+  /* Shimmer effect */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::after {
     content: '';
-    @apply absolute inset-0 pointer-events-none;
-    background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.3) 100%);
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  /* Floating animation */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
   }
 }
 
@@ -185,6 +268,36 @@
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.8s ease-out forwards;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
     }
   }
 }
