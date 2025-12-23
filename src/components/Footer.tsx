@@ -1,4 +1,4 @@
-import { Instagram } from "lucide-react";
+import { Instagram, MapPin, Phone, Mail, Clock, ArrowUpRight } from "lucide-react";
 
 const WhatsAppIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -7,34 +7,130 @@ const WhatsAppIcon = () => (
 );
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
+  const quickLinks = [
+    { name: "Menu", href: "/menu" },
+    { name: "Place Order", href: "/order" },
+    { name: "About Us", href: "/about" },
+    { name: "Gallery", href: "#gallery" },
+  ];
+
   return (
-    <footer className="fixed bottom-0 right-0 p-5 text-xs text-muted z-30 flex items-center gap-4">
-      <div className="flex items-center gap-2">
-        <a
-          href="https://instagram.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-muted hover:text-muted-foreground transition-colors"
-          aria-label="Instagram"
-        >
-          <Instagram className="w-5 h-5" />
-        </a>
-        <a
-          href="https://wa.me/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-muted hover:text-muted-foreground transition-colors"
-          aria-label="WhatsApp"
-        >
-          <WhatsAppIcon />
-        </a>
+    <footer className="bg-dark text-dark-foreground">
+      {/* Main Footer Content */}
+      <div className="container mx-auto px-6 lg:px-12 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          
+          {/* Brand Section */}
+          <div className="lg:col-span-1">
+            <h3 className="font-script text-3xl text-primary mb-4">BBC</h3>
+            <p className="text-dark-foreground/70 text-sm leading-relaxed mb-6">
+              Blue Bay Cafe & Restaurant - Where every dish tells a story and every moment becomes a memory.
+            </p>
+            <div className="flex items-center gap-4">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-dark-muted flex items-center justify-center text-dark-foreground/70 hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href="https://wa.me/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-dark-muted flex items-center justify-center text-dark-foreground/70 hover:bg-green-600 hover:text-white transition-all duration-300"
+                aria-label="WhatsApp"
+              >
+                <WhatsAppIcon />
+              </a>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="text-sm uppercase tracking-widest text-dark-foreground/50 mb-6">Quick Links</h4>
+            <ul className="space-y-3">
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <a 
+                    href={link.href}
+                    className="group flex items-center gap-2 text-dark-foreground/70 hover:text-primary transition-colors duration-300"
+                  >
+                    <span>{link.name}</span>
+                    <ArrowUpRight className="w-4 h-4 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-300" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h4 className="text-sm uppercase tracking-widest text-dark-foreground/50 mb-6">Contact</h4>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                <span className="text-dark-foreground/70 text-sm">
+                  123 Blue Bay Street,<br />Coastal District, 10001
+                </span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone className="w-5 h-5 text-primary flex-shrink-0" />
+                <a href="tel:+1234567890" className="text-dark-foreground/70 text-sm hover:text-primary transition-colors">
+                  +1 (234) 567-890
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail className="w-5 h-5 text-primary flex-shrink-0" />
+                <a href="mailto:hello@bbc.cafe" className="text-dark-foreground/70 text-sm hover:text-primary transition-colors">
+                  hello@bbc.cafe
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Hours */}
+          <div>
+            <h4 className="text-sm uppercase tracking-widest text-dark-foreground/50 mb-6">Hours</h4>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3">
+                <Clock className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                <div className="text-dark-foreground/70 text-sm">
+                  <p className="font-medium text-dark-foreground mb-1">Mon - Fri</p>
+                  <p>7:00 AM - 10:00 PM</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <Clock className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                <div className="text-dark-foreground/70 text-sm">
+                  <p className="font-medium text-dark-foreground mb-1">Sat - Sun</p>
+                  <p>8:00 AM - 11:00 PM</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <p>
-        © 2024 BBC (Blue Bay Cafe). Design by{" "}
-        <a href="#" className="hover:text-muted-foreground transition-colors">
-          Studio
-        </a>
-      </p>
+
+      {/* Bottom Bar */}
+      <div className="border-t border-dark-border">
+        <div className="container mx-auto px-6 lg:px-12 py-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-dark-foreground/50 text-sm">
+              © {currentYear} BBC (Blue Bay Cafe). All rights reserved.
+            </p>
+            <div className="flex items-center gap-6 text-dark-foreground/50 text-sm">
+              <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
+              <span className="w-1 h-1 rounded-full bg-dark-foreground/30" />
+              <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 };
