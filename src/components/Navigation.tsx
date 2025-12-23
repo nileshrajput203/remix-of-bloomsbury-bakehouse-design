@@ -22,18 +22,23 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close menu on route change
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location]);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 pt-4">
+    <nav className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-4 md:px-8 pt-3 sm:pt-4">
       <div 
         className={`mx-auto max-w-7xl transition-all duration-500 ${
           isScrolled 
-            ? "glass-dark rounded-2xl shadow-2xl py-3 px-6" 
-            : "bg-transparent py-4 px-2"
+            ? "glass-dark rounded-xl sm:rounded-2xl shadow-2xl py-2.5 sm:py-3 px-4 sm:px-6" 
+            : "bg-transparent py-3 sm:py-4 px-2"
         }`}
       >
         <div className="flex items-center justify-between">
           {/* Left side - Menu toggle and Logo */}
-          <div className="flex items-center gap-4 md:gap-6">
+          <div className="flex items-center gap-2 sm:gap-4 md:gap-6">
             {/* Hamburger */}
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -45,25 +50,25 @@ const Navigation = () => {
               aria-label="Toggle menu"
             >
               {isOpen ? (
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5 sm:w-6 sm:h-6" />
               ) : (
-                <Menu className="w-6 h-6" />
+                <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
               )}
             </button>
 
             {/* Logo */}
             <Link 
               to="/" 
-              className={`font-script text-2xl md:text-3xl tracking-wide transition-colors duration-300 ${
+              className={`font-script text-xl sm:text-2xl md:text-3xl tracking-wide transition-colors duration-300 ${
                 isScrolled ? "text-primary" : "text-dark-foreground md:text-primary-foreground"
               }`}
             >
-              BBC
+              Blink Beyond
             </Link>
           </div>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {links.map((link) => (
               <Link
                 key={link.path}
@@ -79,7 +84,7 @@ const Navigation = () => {
             ))}
             <Link
               to="/order"
-              className="px-6 py-2.5 rounded-full bg-primary text-primary-foreground text-sm uppercase tracking-widest font-medium transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5"
+              className="px-4 lg:px-6 py-2 lg:py-2.5 rounded-full bg-primary text-primary-foreground text-xs sm:text-sm uppercase tracking-widest font-medium transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5"
             >
               Order Now
             </Link>
@@ -101,20 +106,28 @@ const Navigation = () => {
         
         {/* Menu Content */}
         <div 
-          className={`absolute top-20 left-4 right-4 glass-dark rounded-2xl p-8 transition-all duration-500 ${
+          className={`absolute top-16 sm:top-20 left-3 right-3 sm:left-4 sm:right-4 glass-dark rounded-xl sm:rounded-2xl p-6 sm:p-8 transition-all duration-500 ${
             isOpen ? "translate-y-0 opacity-100" : "-translate-y-8 opacity-0"
           }`}
         >
-          <div className="flex flex-col gap-6">
-            {links.map((link, index) => (
+          <div className="flex flex-col gap-4 sm:gap-6">
+            <Link
+              to="/"
+              onClick={() => setIsOpen(false)}
+              className={`text-xl sm:text-2xl font-serif text-dark-foreground hover:text-primary transition-all duration-300 ${
+                location.pathname === "/" ? "text-primary" : ""
+              }`}
+            >
+              Home
+            </Link>
+            {links.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 onClick={() => setIsOpen(false)}
-                className={`text-2xl font-serif text-dark-foreground hover:text-primary transition-all duration-300 ${
+                className={`text-xl sm:text-2xl font-serif text-dark-foreground hover:text-primary transition-all duration-300 ${
                   isActive(link.path) ? "text-primary" : ""
                 }`}
-                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {link.name}
               </Link>
@@ -122,7 +135,7 @@ const Navigation = () => {
             <Link
               to="/order"
               onClick={() => setIsOpen(false)}
-              className="mt-4 px-8 py-4 rounded-xl bg-primary text-primary-foreground text-center text-sm uppercase tracking-widest font-medium transition-all duration-300 hover:shadow-lg"
+              className="mt-2 sm:mt-4 px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-primary text-primary-foreground text-center text-xs sm:text-sm uppercase tracking-widest font-medium transition-all duration-300 hover:shadow-lg"
             >
               Place Order
             </Link>

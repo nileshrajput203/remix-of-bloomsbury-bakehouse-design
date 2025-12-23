@@ -19,30 +19,30 @@ const Footer = () => {
   return (
     <footer className="bg-dark text-dark-foreground">
       {/* Main Footer Content */}
-      <div className="container mx-auto px-6 lg:px-12 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 py-10 sm:py-12 lg:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12">
           
           {/* Brand Section */}
-          <div className="lg:col-span-1">
-            <h3 className="font-script text-3xl text-primary mb-4">BBC</h3>
-            <p className="text-dark-foreground/70 text-sm leading-relaxed mb-6">
-              Blue Bay Cafe & Restaurant - Where every dish tells a story and every moment becomes a memory.
+          <div className="sm:col-span-2 lg:col-span-1">
+            <h3 className="font-script text-2xl sm:text-3xl text-primary mb-3 sm:mb-4">Blink Beyond</h3>
+            <p className="text-dark-foreground/70 text-sm leading-relaxed mb-4 sm:mb-6 max-w-sm">
+              Blink Beyond Cafe & Restaurant - Where every dish tells a story and every moment becomes a memory.
             </p>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 sm:gap-4">
               <a
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-dark-muted flex items-center justify-center text-dark-foreground/70 hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-dark-muted flex items-center justify-center text-dark-foreground/70 hover:bg-primary hover:text-primary-foreground transition-all duration-300"
                 aria-label="Instagram"
               >
-                <Instagram className="w-5 h-5" />
+                <Instagram className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
               <a
                 href="https://wa.me/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-dark-muted flex items-center justify-center text-dark-foreground/70 hover:bg-green-600 hover:text-white transition-all duration-300"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-dark-muted flex items-center justify-center text-dark-foreground/70 hover:bg-green-600 hover:text-white transition-all duration-300"
                 aria-label="WhatsApp"
               >
                 <WhatsAppIcon />
@@ -52,16 +52,16 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-sm uppercase tracking-widest text-dark-foreground/50 mb-6">Quick Links</h4>
-            <ul className="space-y-3">
+            <h4 className="text-xs sm:text-sm uppercase tracking-widest text-dark-foreground/50 mb-4 sm:mb-6">Quick Links</h4>
+            <ul className="space-y-2 sm:space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <a 
                     href={link.href}
-                    className="group flex items-center gap-2 text-dark-foreground/70 hover:text-primary transition-colors duration-300"
+                    className="group flex items-center gap-2 text-dark-foreground/70 hover:text-primary transition-colors duration-300 text-sm sm:text-base"
                   >
                     <span>{link.name}</span>
-                    <ArrowUpRight className="w-4 h-4 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-300" />
+                    <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-300" />
                   </a>
                 </li>
               ))}
@@ -70,24 +70,24 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-sm uppercase tracking-widest text-dark-foreground/50 mb-6">Contact</h4>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-dark-foreground/70 text-sm">
-                  123 Blue Bay Street,<br />Coastal District, 10001
+            <h4 className="text-xs sm:text-sm uppercase tracking-widest text-dark-foreground/50 mb-4 sm:mb-6">Contact</h4>
+            <ul className="space-y-3 sm:space-y-4">
+              <li className="flex items-start gap-2 sm:gap-3">
+                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary mt-0.5 flex-shrink-0" />
+                <span className="text-dark-foreground/70 text-xs sm:text-sm">
+                  123 Blink Street,<br />City Center, 10001
                 </span>
               </li>
-              <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-primary flex-shrink-0" />
-                <a href="tel:+1234567890" className="text-dark-foreground/70 text-sm hover:text-primary transition-colors">
+              <li className="flex items-center gap-2 sm:gap-3">
+                <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
+                <a href="tel:+1234567890" className="text-dark-foreground/70 text-xs sm:text-sm hover:text-primary transition-colors">
                   +1 (234) 567-890
                 </a>
               </li>
-              <li className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-primary flex-shrink-0" />
-                <a href="mailto:hello@bbc.cafe" className="text-dark-foreground/70 text-sm hover:text-primary transition-colors">
-                  hello@bbc.cafe
+              <li className="flex items-center gap-2 sm:gap-3">
+                <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
+                <a href="mailto:hello@blinkbeyond.cafe" className="text-dark-foreground/70 text-xs sm:text-sm hover:text-primary transition-colors">
+                  hello@blinkbeyond.cafe
                 </a>
               </li>
             </ul>
@@ -95,19 +95,19 @@ const Footer = () => {
 
           {/* Hours */}
           <div>
-            <h4 className="text-sm uppercase tracking-widest text-dark-foreground/50 mb-6">Hours</h4>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <Clock className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                <div className="text-dark-foreground/70 text-sm">
-                  <p className="font-medium text-dark-foreground mb-1">Mon - Fri</p>
+            <h4 className="text-xs sm:text-sm uppercase tracking-widest text-dark-foreground/50 mb-4 sm:mb-6">Hours</h4>
+            <ul className="space-y-2 sm:space-y-3">
+              <li className="flex items-start gap-2 sm:gap-3">
+                <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-primary mt-0.5 flex-shrink-0" />
+                <div className="text-dark-foreground/70 text-xs sm:text-sm">
+                  <p className="font-medium text-dark-foreground mb-0.5 sm:mb-1">Mon - Fri</p>
                   <p>7:00 AM - 10:00 PM</p>
                 </div>
               </li>
-              <li className="flex items-start gap-3">
-                <Clock className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
-                <div className="text-dark-foreground/70 text-sm">
-                  <p className="font-medium text-dark-foreground mb-1">Sat - Sun</p>
+              <li className="flex items-start gap-2 sm:gap-3">
+                <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-accent mt-0.5 flex-shrink-0" />
+                <div className="text-dark-foreground/70 text-xs sm:text-sm">
+                  <p className="font-medium text-dark-foreground mb-0.5 sm:mb-1">Sat - Sun</p>
                   <p>8:00 AM - 11:00 PM</p>
                 </div>
               </li>
@@ -118,15 +118,15 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="border-t border-dark-border">
-        <div className="container mx-auto px-6 lg:px-12 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-dark-foreground/50 text-sm">
-              © {currentYear} BBC (Blue Bay Cafe). All rights reserved.
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12 py-4 sm:py-6">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
+            <p className="text-dark-foreground/50 text-xs sm:text-sm text-center sm:text-left">
+              © {currentYear} Blink Beyond Cafe. All rights reserved.
             </p>
-            <div className="flex items-center gap-6 text-dark-foreground/50 text-sm">
-              <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
+            <div className="flex items-center gap-4 sm:gap-6 text-dark-foreground/50 text-xs sm:text-sm">
+              <a href="#" className="hover:text-primary transition-colors">Privacy</a>
               <span className="w-1 h-1 rounded-full bg-dark-foreground/30" />
-              <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
+              <a href="#" className="hover:text-primary transition-colors">Terms</a>
             </div>
           </div>
         </div>
