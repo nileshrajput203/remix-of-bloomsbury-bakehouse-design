@@ -10,6 +10,7 @@ const Navigation = () => {
   const links = [
     { name: "Menu", path: "/menu" },
     { name: "About", path: "/about" },
+    { name: "Order Now", path: "/order" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -84,15 +85,6 @@ const Navigation = () => {
             </div>
           </div>
 
-          {/* Right side - Order Now Button */}
-          <div className="hidden md:block">
-            <Link
-              to="/order"
-              className="px-4 lg:px-6 py-2 lg:py-2.5 rounded-full bg-primary text-primary-foreground text-xs sm:text-sm uppercase tracking-widest font-medium transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5"
-            >
-              Order Now
-            </Link>
-          </div>
         </div>
       </div>
 
