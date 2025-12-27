@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import Layout from "@/components/Layout";
 import { ArrowUp } from "lucide-react";
-import cardMenu from "@/assets/card-menu.jpg";
+import menuHero from "@/assets/menu-hero.jpg";
 
 const menuCategories = [
   { id: "seafood", name: "Seafood" },
