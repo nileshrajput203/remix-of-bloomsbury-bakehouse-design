@@ -10,8 +10,9 @@ const Navigation = () => {
   const links = [
     { name: "Menu", path: "/menu" },
     { name: "About", path: "/about" },
-    { name: "Order Now", path: "/order" },
   ];
+
+  const zomatoLink = "https://www.zomato.com/mumbai/breeze-the-rooftop-cafe-palghar";
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -82,6 +83,16 @@ const Navigation = () => {
                   {link.name}
                 </Link>
               ))}
+              <a
+                href={zomatoLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`nav-link uppercase text-xs tracking-widest font-medium transition-colors duration-300 ${
+                  isScrolled ? "text-dark-foreground" : "text-primary-foreground"
+                } opacity-70 hover:opacity-100`}
+              >
+                Order Now
+              </a>
             </div>
           </div>
 
@@ -128,13 +139,15 @@ const Navigation = () => {
                 {link.name}
               </Link>
             ))}
-            <Link
-              to="/order"
+            <a
+              href={zomatoLink}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
               className="mt-2 sm:mt-4 px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-primary text-primary-foreground text-center text-xs sm:text-sm uppercase tracking-widest font-medium transition-all duration-300 hover:shadow-lg"
             >
-              Place Order
-            </Link>
+              Order Now
+            </a>
           </div>
         </div>
       </div>
