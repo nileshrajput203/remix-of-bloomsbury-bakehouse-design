@@ -183,7 +183,7 @@ const Menu = () => {
         <div className="relative lg:w-1/2 h-[30vh] sm:h-[35vh] lg:h-screen flex-shrink-0">
           <div className="absolute inset-0">
             <img 
-              src={cardMenu} 
+              src={menuHero} 
               alt="Breeze Cafe Menu" 
               className="w-full h-full object-cover"
             />
