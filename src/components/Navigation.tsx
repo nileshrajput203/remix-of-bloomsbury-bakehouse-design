@@ -63,7 +63,7 @@ const Navigation = () => {
                 isScrolled ? "text-primary" : "text-dark-foreground md:text-primary-foreground"
               }`}
             >
-              Blink Beyond
+              Breeze
             </Link>
           </div>
 

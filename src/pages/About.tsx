@@ -33,7 +33,7 @@ const About = () => {
           <div className="absolute inset-0">
             <img 
               src={galleryInterior} 
-              alt="Blink Beyond Cafe Interior" 
+              alt="Breeze Rooftop Cafe Interior" 
               className="w-full h-full object-cover"
             />
           </div>
@@ -54,32 +54,33 @@ const About = () => {
         >
           <div className="max-w-lg">
             <h2 className="font-serif font-light tracking-wide text-dark-foreground mb-4 sm:mb-6 animate-fade-up text-xl sm:text-2xl lg:text-3xl">
-              Welcome to Blink Beyond Cafe
+              Welcome to Breeze
             </h2>
 
             <div className="space-y-4 sm:space-y-5 text-dark-foreground/80 leading-relaxed text-sm sm:text-base">
               <p className="animate-fade-up" style={{ animationDelay: "0.1s" }}>
-                At Blink Beyond Cafe, we believe that every moment deserves to be extraordinary. 
-                Our passion for culinary excellence drives us to create dishes that not only 
-                satisfy your hunger but elevate your dining experience.
+                Perched on the 5th floor of Kanchan Aura, Breeze is Palghar's premier rooftop cafe 
+                with incredible atmosphere and unmatched ambiance. Every visit is an experience 
+                that elevates your senses.
               </p>
               <p className="animate-fade-up" style={{ animationDelay: "0.2s" }}>
-                Founded with a vision to blend modern gastronomy with warm hospitality, 
-                we've crafted a space where food lovers can discover new flavors, 
-                reconnect with friends, and create lasting memories.
+                With breathtaking views and a carefully curated menu, we've created a space 
+                where food lovers can discover new flavors, reconnect with friends, and 
+                create lasting memories under the open sky.
               </p>
               <p className="animate-fade-up" style={{ animationDelay: "0.3s" }}>
-                Every ingredient is carefully sourced, every dish is thoughtfully prepared, 
-                and every guest is treated like family. That's the Blink Beyond promise.
+                Open daily from 11 AM to 11 PM, every ingredient is carefully sourced, 
+                every dish is thoughtfully prepared, and every guest is treated like family. 
+                That's the Breeze promise.
               </p>
             </div>
 
             <p className="text-dark-foreground font-medium mt-6 sm:mt-8 mb-6 sm:mb-8 animate-fade-up text-sm sm:text-base" style={{ animationDelay: "0.4s" }}>
-              Experience the difference. Experience Blink Beyond.
+              Experience the difference. Experience Breeze.
             </p>
 
             <a
-              href="https://www.instagram.com/blinkbeyondcafe"
+              href="https://www.instagram.com/breezecafe"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-cta inline-block text-center w-full animate-fade-up text-xs sm:text-sm lg:text-base py-3 sm:py-4 px-6 sm:px-8"

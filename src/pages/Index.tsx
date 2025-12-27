@@ -19,7 +19,7 @@ const Index = () => {
           <div className="absolute inset-0">
             <img 
               src={heroCafe} 
-              alt="Blink Beyond Cafe Interior" 
+              alt="Breeze Rooftop Cafe Palghar" 
               className="w-full h-full object-cover"
             />
           </div>
@@ -31,13 +31,13 @@ const Index = () => {
           {/* Hero Content */}
           <div className="absolute bottom-8 lg:bottom-20 left-6 md:left-12 lg:left-16 right-6 md:right-12 lg:right-16 z-10">
             <span className="inline-block px-4 py-2 rounded-full bg-primary/20 backdrop-blur-sm text-primary-foreground text-xs sm:text-sm uppercase tracking-widest mb-4 lg:mb-6 animate-fade-up border border-primary/30">
-              Welcome to BBC
+              Rooftop Cafe • Palghar
             </span>
             <h1 className="font-serif font-light tracking-wide text-dark-foreground mb-4 lg:mb-6 animate-fade-up text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight" style={{ animationDelay: "0.1s" }}>
-              Blink Beyond<br className="hidden sm:block" /> Cafe
+              Breeze
             </h1>
             <p className="text-dark-foreground/80 text-base sm:text-lg md:text-xl font-light leading-relaxed max-w-xl lg:max-w-2xl animate-fade-up" style={{ animationDelay: "0.2s" }}>
-              Where culinary artistry meets modern elegance. Experience unforgettable flavors in an inviting atmosphere.
+              Incredible atmosphere. Unmatched ambiance. Experience Palghar's premier rooftop dining destination.
             </p>
           </div>
 

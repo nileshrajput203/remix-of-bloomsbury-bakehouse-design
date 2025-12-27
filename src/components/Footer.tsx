@@ -24,9 +24,9 @@ const Footer = () => {
           
           {/* Brand Section */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <h3 className="font-script text-2xl sm:text-3xl text-primary mb-3 sm:mb-4">Blink Beyond</h3>
+            <h3 className="font-script text-2xl sm:text-3xl text-primary mb-3 sm:mb-4">Breeze</h3>
             <p className="text-dark-foreground/70 text-sm leading-relaxed mb-4 sm:mb-6 max-w-sm">
-              Blink Beyond Cafe & Restaurant - Where every dish tells a story and every moment becomes a memory.
+              Breeze - Palghar's premier rooftop cafe with incredible atmosphere and unmatched ambiance.
             </p>
             <div className="flex items-center gap-3 sm:gap-4">
               <a
@@ -75,19 +75,19 @@ const Footer = () => {
               <li className="flex items-start gap-2 sm:gap-3">
                 <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary mt-0.5 flex-shrink-0" />
                 <span className="text-dark-foreground/70 text-xs sm:text-sm">
-                  123 Blink Street,<br />City Center, 10001
+                  5th Floor Kanchan Aura,<br />Mahim Rd, Palghar,<br />Maharashtra 401404
                 </span>
               </li>
               <li className="flex items-center gap-2 sm:gap-3">
                 <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
-                <a href="tel:+1234567890" className="text-dark-foreground/70 text-xs sm:text-sm hover:text-primary transition-colors">
-                  +1 (234) 567-890
+                <a href="tel:+919999999999" className="text-dark-foreground/70 text-xs sm:text-sm hover:text-primary transition-colors">
+                  Contact Us
                 </a>
               </li>
               <li className="flex items-center gap-2 sm:gap-3">
                 <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
-                <a href="mailto:hello@blinkbeyond.cafe" className="text-dark-foreground/70 text-xs sm:text-sm hover:text-primary transition-colors">
-                  hello@blinkbeyond.cafe
+                <a href="mailto:hello@breezecafe.in" className="text-dark-foreground/70 text-xs sm:text-sm hover:text-primary transition-colors">
+                  hello@breezecafe.in
                 </a>
               </li>
             </ul>
@@ -100,15 +100,8 @@ const Footer = () => {
               <li className="flex items-start gap-2 sm:gap-3">
                 <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-primary mt-0.5 flex-shrink-0" />
                 <div className="text-dark-foreground/70 text-xs sm:text-sm">
-                  <p className="font-medium text-dark-foreground mb-0.5 sm:mb-1">Mon - Fri</p>
-                  <p>7:00 AM - 10:00 PM</p>
-                </div>
-              </li>
-              <li className="flex items-start gap-2 sm:gap-3">
-                <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-accent mt-0.5 flex-shrink-0" />
-                <div className="text-dark-foreground/70 text-xs sm:text-sm">
-                  <p className="font-medium text-dark-foreground mb-0.5 sm:mb-1">Sat - Sun</p>
-                  <p>8:00 AM - 11:00 PM</p>
+                  <p className="font-medium text-dark-foreground mb-0.5 sm:mb-1">Daily</p>
+                  <p>11:00 AM - 11:00 PM</p>
                 </div>
               </li>
             </ul>
@@ -121,7 +114,7 @@ const Footer = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-12 py-4 sm:py-6">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
             <p className="text-dark-foreground/50 text-xs sm:text-sm text-center sm:text-left">
-              © {currentYear} Blink Beyond Cafe. All rights reserved.
+              © {currentYear} Breeze Cafe. All rights reserved.
             </p>
             <div className="flex items-center gap-4 sm:gap-6 text-dark-foreground/50 text-xs sm:text-sm">
               <a href="#" className="hover:text-primary transition-colors">Privacy</a>
