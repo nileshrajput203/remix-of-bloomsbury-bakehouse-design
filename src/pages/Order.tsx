@@ -32,7 +32,7 @@ const Order = () => {
           <div className="absolute inset-0">
             <img 
               src={cardOrder} 
-              alt="Order from Blink Beyond Cafe" 
+              alt="Order from Breeze Cafe" 
               className="w-full h-full object-cover"
             />
           </div>

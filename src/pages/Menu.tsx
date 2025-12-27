@@ -184,7 +184,7 @@ const Menu = () => {
           <div className="absolute inset-0">
             <img 
               src={cardMenu} 
-              alt="Blink Beyond Cafe Menu" 
+              alt="Breeze Cafe Menu" 
               className="w-full h-full object-cover"
             />
           </div>
