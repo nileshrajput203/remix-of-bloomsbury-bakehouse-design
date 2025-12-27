@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import Layout from "@/components/Layout";
 import { ArrowUp } from "lucide-react";
-import cardMenu from "@/assets/card-menu.jpg";
+import menuHero from "@/assets/menu-hero.jpg";
 
 const menuCategories = [
   { id: "seafood", name: "Seafood" },
@@ -183,7 +183,7 @@ const Menu = () => {
         <div className="relative lg:w-1/2 h-[30vh] sm:h-[35vh] lg:h-screen flex-shrink-0">
           <div className="absolute inset-0">
             <img 
-              src={cardMenu} 
+              src={menuHero} 
               alt="Breeze Cafe Menu" 
               className="w-full h-full object-cover"
             />
