@@ -37,15 +37,15 @@ const Navigation = () => {
         }`}
       >
         <div className="flex items-center justify-between">
-          {/* Left side - Menu toggle and Logo */}
+          {/* Left side - Menu toggle, Logo, and Nav Links */}
           <div className="flex items-center gap-2 sm:gap-4 md:gap-6">
-            {/* Hamburger */}
+            {/* Hamburger - Mobile Only */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-2 rounded-xl transition-all duration-300 ${
+              className={`md:hidden p-2 rounded-xl transition-all duration-300 ${
                 isScrolled 
                   ? "hover:bg-dark-muted text-dark-foreground" 
-                  : "hover:bg-dark/20 text-dark-foreground md:text-primary-foreground"
+                  : "hover:bg-dark/20 text-dark-foreground"
               }`}
               aria-label="Toggle menu"
             >
@@ -65,23 +65,27 @@ const Navigation = () => {
             >
               Breeze
             </Link>
+
+            {/* Desktop Links - Next to Logo */}
+            <div className="hidden md:flex items-center gap-6 lg:gap-8 ml-4 lg:ml-8">
+              {links.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`nav-link uppercase text-xs tracking-widest font-medium transition-colors duration-300 ${
+                    isScrolled ? "text-dark-foreground" : "text-primary-foreground"
+                  } ${
+                    isActive(link.path) ? "opacity-100" : "opacity-70 hover:opacity-100"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
           </div>
 
-          {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-6 lg:gap-8">
-            {links.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`nav-link transition-colors duration-300 ${
-                  isScrolled ? "text-dark-foreground" : "text-primary-foreground"
-                } ${
-                  isActive(link.path) ? "opacity-100" : "opacity-70 hover:opacity-100"
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
+          {/* Right side - Order Now Button */}
+          <div className="hidden md:block">
             <Link
               to="/order"
               className="px-4 lg:px-6 py-2 lg:py-2.5 rounded-full bg-primary text-primary-foreground text-xs sm:text-sm uppercase tracking-widest font-medium transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5"
